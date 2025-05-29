@@ -31,10 +31,10 @@
     </div>
 
     <div class="grid grid-cols-4 gap-5">
-        <div class="shadow-lg border-2 border-gray-900">
-            <img src="https://lh4.googleusercontent.com/proxy/TIEzkrDX46iMbqGhwPdrlF1A1jy-Wa9eHj6WNX5FMaSu76MY32kzM72TdtRzsQySqVcvc_Xk_Dexyi7xWBGT8HM_4JLIlQNpRS7LpDdBHIfpAGGSxtGC2TAf76gWsjLDrIAH1e7-BImHORGwAS2SS9A1C4UzPtjdAHjBUlLxuBAd3lvbGzuz1BNf63wAcGel08EUl6pN" alt="Instagram logo">
-            <h3 class="pt-1 px-3 text-xl font-bold">Instagram</h3>
-            <div class="w-60 mx-3 px-3 py-1 bg-blue-300 text-blue-700 rounded-lg text-sm">https://www.instagram.com</div>
+        <div *ngFor="let site of allSites | async" class="shadow-lg border-2 border-gray-900">
+            <img [src]="site.siteImageURL" alt="Instagram logo">
+            <h3 class="pt-1 px-3 text-xl font-bold">{{ site.siteName }}</h3>
+            <div class="w-60 mx-3 px-3 py-1 bg-blue-300 text-blue-700 rounded-lg text-sm">{{site.siteURL}}</div>
             <button class="bg-black border-black border-2 text-white m-2 p-2 text-sm rounded-sm">
                 Add new password
             </button>
