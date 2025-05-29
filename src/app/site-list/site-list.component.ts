@@ -12,33 +12,77 @@ import { CommonModule } from '@angular/common';
 export class SiteListComponent {
 
   allSites! : Observable <Array<any>>
-  
+  siteName!: string;
+  siteURL!: string;
+  siteImageURL!: string;
+  siteId!: string;
+  formState:string = "Add New";
+
   constructor(private passwordManagerService : PasswordManagerService) {
     this.loadSites();
   }
 
 
   onSubmit(formValues : object){
-    console.log("Submitted");
     console.log(formValues);
-    this.passwordManagerService.addSite(formValues)
-    .then(
-      ()=>{
-        console.log('Data saved');
-      }
-    )
-    .catch(
-      (err)=>{
-        console.log(err);
-      }
-    )
+    if(this.formState === 'Add New'){
+      this.passwordManagerService.addSite(formValues)
+      .then(
+        ()=>{
+          console.log('Data saved');
+        }
+      )
+      .catch(
+        (err)=>{
+          console.log(err);
+        }
+      )
+    }
+    else if(this.formState === 'Edit'){
+      this.passwordManagerService.updateSite(this.siteId, formValues)
+      .then(
+        ()=>{
+          console.log("Site Data Updated");
+        }
+      ).catch(
+        err=>{
+          console.log(err);
+        }
+      );
+    }
   }
+          
+          
 
 
   loadSites(){
     this.allSites = this.passwordManagerService.loadSites();
   }
+
+  editSite(siteName: string, siteURL: string, siteImageURL:string, id:string){
+    this.siteName = siteName;
+    this.siteURL = siteURL;
+    this.siteImageURL = siteImageURL;
+    this.siteId = id;
+
+    this.formState = 'Edit';
+  }
+
+  deleteSite(id:string){
+    this.passwordManagerService.deleteSite(id)
+    .then(
+      ()=>{
+        console.log('Deleted');
+      }
+    )
+    .catch(
+      err=>{
+        console.log(err);
+      }
+    )      
+  }
 }
+        
 
         
        

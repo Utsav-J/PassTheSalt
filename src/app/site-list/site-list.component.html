@@ -6,23 +6,23 @@
 
     <!-- new site form -->
     <div class="p-4 m-5 border-4 border-gray-900">
-        <h2 class="text-3xl text-center">Add new site</h2>
+        <h2 class="text-3xl text-center">{{ formState }} site</h2>
         <p class="text-center">Enter the details for your new site</p>
         <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
             <div class="flex flex-col">
                 <label for="site-name" class="text-lg font-medium mb-2">Site Name</label>
-                <input ngModel type="text" name="siteName" class="border-2 border-gray-600 p-2 rounded-lg w-full">
+                <input [(ngModel)]="siteName" type="text" name="siteName" class="border-2 border-gray-600 p-2 rounded-lg w-full">
             </div>
             <div class="flex flex-col">
                 <label for="site-url" class="text-lg font-medium mb-2">Site URL</label>
-                <input ngModel type="text" name="siteURL" class="border-2 border-gray-600 p-2 rounded-lg w-full">
+                <input [(ngModel)]="siteURL" type="text" name="siteURL" class="border-2 border-gray-600 p-2 rounded-lg w-full">
             </div>
             <div class="flex flex-col">
                 <label for="site-image" class="text-lg font-medium mb-2">Site Image</label>
-                <input ngModel type="text" name="siteImageURL" class="border-2 border-gray-600 p-2 rounded-lg w-full">
+                <input [(ngModel)]="siteImageURL" type="text" name="siteImageURL" class="border-2 border-gray-600 p-2 rounded-lg w-full">
             </div>
             <button class="mt-5 text-sm p-2 bg-gray-800 text-white shadow rounded-md">
-                Add New Site
+                {{formState}} Site
             </button>
             <button class="mt-5 mx-3 text-sm p-2 border border-gray-800 shadow rounded-md">
                 Cancel
@@ -38,10 +38,10 @@
             <button class="bg-black border-black border-2 text-white m-2 p-2 text-sm rounded-sm">
                 Add new password
             </button>
-            <button class="border-black border-2 mx-1 p-2 text-sm rounded-sm">
+            <button (click)="editSite(site.siteName, site.siteURL, site.siteImageURL, site.id)" class="border-black border-2 mx-1 p-2 text-sm rounded-sm" >
                 Edit
             </button>
-            <button class="border-black border-2 mx-1 p-2 text-sm rounded-sm">
+            <button (click)="deleteSite(site.id)" class="border-black border-2 mx-1 p-2 text-sm rounded-sm">
                 Delete
             </button>
         </div>
