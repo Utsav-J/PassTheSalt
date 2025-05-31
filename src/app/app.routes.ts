@@ -1,7 +1,8 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SiteListComponent } from './site-list/site-list.component';
 import { PasswordListComponent } from './password-list/password-list.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     {
@@ -17,3 +18,9 @@ export const routes: Routes = [
         component: PasswordListComponent
     }
 ];
+
+// @NgModule({
+//     imports : [RouterModule.forRoot(routes)],
+//     exports: [RouterModule]
+// })
+// export class AppRoutingModule()
