@@ -27,6 +27,6 @@ export class PasswordManagerService {
 
   deleteSite(id:string){
     const docInstance = doc(this.firestore, "sites", id);
-    return deleteDoc(docInstance);
+    return  deleteDoc(docInstance);
   }
 }

@@ -5,7 +5,7 @@ import { SiteListComponent } from './site-list/site-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, SiteListComponent],
+  imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

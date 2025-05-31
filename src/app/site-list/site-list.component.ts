@@ -17,11 +17,17 @@ export class SiteListComponent {
   siteImageURL!: string;
   siteId!: string;
   formState:string = "Add New";
+  successfulOperation:boolean = false;
+  successMessage!:string;
 
   constructor(private passwordManagerService : PasswordManagerService) {
     this.loadSites();
   }
 
+  showAlert(message:string){
+    this.successMessage = message;
+    this.successfulOperation = true;
+  }
 
   onSubmit(formValues : object){
     console.log(formValues);
@@ -30,6 +36,7 @@ export class SiteListComponent {
       .then(
         ()=>{
           console.log('Data saved');
+          this.showAlert('New Site Saved')
         }
       )
       .catch(
@@ -43,6 +50,7 @@ export class SiteListComponent {
       .then(
         ()=>{
           console.log("Site Data Updated");
+          this.showAlert('Site Data Updated')
         }
       ).catch(
         err=>{
@@ -52,9 +60,6 @@ export class SiteListComponent {
     }
   }
           
-          
-
-
   loadSites(){
     this.allSites = this.passwordManagerService.loadSites();
   }
@@ -73,6 +78,7 @@ export class SiteListComponent {
     .then(
       ()=>{
         console.log('Deleted');
+        this.showAlert('Site Deleted Successfully')
       }
     )
     .catch(
@@ -82,6 +88,8 @@ export class SiteListComponent {
     )      
   }
 }
+
+// 5:25:26
         
 
         

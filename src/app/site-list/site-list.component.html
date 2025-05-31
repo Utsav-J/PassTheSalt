@@ -3,6 +3,13 @@
     <p class="font-light mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed temporibus sint unde sapiente quia doloribus vero odit similique, dolorem alias dolorum et soluta, voluptatum, corrupti nemo quasi deserunt? Assumenda, cum.</p>
     <button class=" text-white bg-slate-800 p-2 m-2 rounded-md shadow-md">Add New Site </button>
 
+    <!-- alert message -->
+    @if (successfulOperation){
+        <div class="p-5 m-3 bg-teal-100 text-teal-900 rounded-lg">
+            {{successMessage}}
+        </div>
+    }
+
 
     <!-- new site form -->
     <div class="p-4 m-5 border-4 border-gray-900">
