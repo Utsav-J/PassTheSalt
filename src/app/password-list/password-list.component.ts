@@ -5,10 +5,11 @@ import { PasswordManagerService } from '../password-manager.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import {AES, enc} from 'crypto-js';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-password-list',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, NavbarComponent],
   templateUrl: './password-list.component.html',
   styleUrl: './password-list.component.css'
 })
