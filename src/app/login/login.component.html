@@ -1,9 +1,16 @@
 <section class="mx-40">
-    <div class="flex flex-col items-center justify-center px-6 py-10 mx-28 h-screen ">
-        <div class="w-full rounded-lg shadow mx-w-md border-4 bg-white border-gray-900 ">
+    <div class="flex flex-col items-center justify-center px-6 h-screen relative z-10 ">
+        <div class="w-full flex-none mb-10 shadow border-4 bg-white border-gray-900  ">
             <div class="p-6 space-y-6">
                 <h1 class="text-2xl font-bold font-mono text-center text-gray-800">Log Into Your Account</h1>
-                <form #form="ngForm" class="space-y-6">
+                
+                @if (loginError){
+                    <div class="animate-pulse transition-all bg-red-400 text-xl text-white text-center py-2 rounded-md shadow-lg shadow-red-300">
+                        ⚠️No User Found
+                    </div>
+                }
+
+                <form #form="ngForm" (ngSubmit)="loginUser(form.value)" class="space-y-6">
                     <div class="space-y-2">
                         <label class="block mb-2 text-base font-mono font-extrabold text-gray-900">E-Mail</label>
                         <input ngModel type="email" name="email" placeholder="yourname@example.com" class="block text-sm w-full p-2 border-2 rounded-md border-gray-900">
